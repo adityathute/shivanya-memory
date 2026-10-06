@@ -180,7 +180,13 @@ class MemoryPinChangeView(APIView):
 
 class MemoryPinResetRequestView(APIView):
     def post(self,request):
-        token=token_urlsafe(48);MemoryPinReset.objects.create(user=request.user,token=token,expires_at=timezone.now()+timedelta(minutes=15));return Response({"token":token})
+        from django.contrib.auth.hashers import check_password
+        password=str(request.data.get("current_password",""))
+        if not password or not check_password(password,getattr(request.user,"password","")):
+            return Response({"detail":"Current account password is incorrect."},status=400)
+        token=token_urlsafe(48)
+        MemoryPinReset.objects.create(user=request.user,token=token,expires_at=timezone.now()+timedelta(minutes=15))
+        return Response({"token":token})
 
 class MemoryPinResetView(APIView):
     def post(self,request):
