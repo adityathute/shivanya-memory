@@ -10,8 +10,8 @@ class MemoryJWTAuthentication(JWTAuthentication):
         validated=self.get_validated_token(raw)
         user_id=validated.get("user_id")
         session_id=validated.get("session_id")
-        if not user_id or not session_id:raise AuthenticationFailed("Authentication session is missing.")
+        if not user_id:raise AuthenticationFailed("Authentication user is missing.")
         try:user=ExternalUser.objects.get(id=user_id)
         except ExternalUser.DoesNotExist as exc:raise AuthenticationFailed("User not found.") from exc
-        if not AuthSession.objects.filter(id=session_id,user=user,revoked_at__isnull=True).exists():raise AuthenticationFailed("Your session has been signed out.")
+        if session_id and not AuthSession.objects.filter(id=session_id,user=user,revoked_at__isnull=True).exists():raise AuthenticationFailed("Your session has been signed out.")
         return user,validated
