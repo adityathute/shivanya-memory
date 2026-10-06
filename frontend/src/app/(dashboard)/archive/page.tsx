@@ -1,1 +1,1 @@
-import MemoryPage from "@/components/MemoryPage";export default function Page(){return <MemoryPage resource="notes" />;}
+import ArchivePage from "@/components/ArchivePage";export default function Page(){return <ArchivePage/>;}
