@@ -1,0 +1,1 @@
+import {AuthGuard} from "@/lib/auth";import {MemoryShell} from "@/lib/shell";export default function DashboardLayout({children}:{children:React.ReactNode}){return <AuthGuard><MemoryShell>{children}</MemoryShell></AuthGuard>;}
