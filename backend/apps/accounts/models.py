@@ -5,3 +5,7 @@ class ExternalUser(models.Model):
     class Meta:
         managed=False
         db_table="accounts_user"
+    @property
+    def is_authenticated(self): return True
+    @property
+    def is_anonymous(self): return False
