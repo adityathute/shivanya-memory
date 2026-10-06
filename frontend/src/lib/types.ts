@@ -1,0 +1,1 @@
+export type MemoryResource="notes"|"tasks"|"lists"|"goals"|"routines"|"reminders"|"tags";export type MemoryItem={id:number;title:string;content?:string;completed?:boolean;locked?:boolean;favorite?:boolean;archived?:boolean;trashed?:boolean;priority?:string;updated_at?:string;created_at?:string;[key:string]:unknown;};
