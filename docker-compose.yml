@@ -1,0 +1,17 @@
+services:
+  memory-backend:
+    build: ./backend
+    env_file: ./backend/.env
+    ports:
+      - "8002:8002"
+  memory-frontend:
+    build: ./frontend
+    environment:
+      NEXT_PUBLIC_AUTH_URL: http://localhost:8001
+      NEXT_PUBLIC_MEMORY_API_URL: http://localhost:8002
+      NEXT_PUBLIC_MEMORY_API_PREFIX: api/v1
+      NEXT_PUBLIC_APP_URL: http://localhost:3008
+    depends_on:
+      - memory-backend
+    ports:
+      - "3008:3008"
