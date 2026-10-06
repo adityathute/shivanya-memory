@@ -21,6 +21,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm typecheck
+      - run: pnpm test
       - run: pnpm build
   backend:
     runs-on: ubuntu-latest
