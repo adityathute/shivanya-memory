@@ -2,7 +2,7 @@ from django.db import models
 from apps.accounts.models import ExternalUser
 
 class Owned(models.Model):
-    user=models.ForeignKey(ExternalUser,on_delete=models.CASCADE)
+    user=models.ForeignKey(ExternalUser,on_delete=models.CASCADE,db_constraint=False)
     title=models.CharField(max_length=255)
     content=models.TextField(blank=True)
     locked=models.BooleanField(default=False)
@@ -117,7 +117,7 @@ class MemoryTag(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
 
 class MemoryPin(models.Model):
-    user=models.OneToOneField(ExternalUser,on_delete=models.CASCADE,related_name="memory_pin")
+    user=models.OneToOneField(ExternalUser,on_delete=models.CASCADE,db_constraint=False,related_name="memory_pin")
     pin=models.CharField(max_length=128)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
