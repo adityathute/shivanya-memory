@@ -1,0 +1,3 @@
+import type {Metadata} from "next";import {AuthProvider} from "@/lib/auth";import {ThemeScript} from "shivanya-ui";import "shivanya-ui/styles";import "./globals.css";
+export const metadata:Metadata={metadataBase:new URL(process.env.NEXT_PUBLIC_APP_URL||"http://localhost:3008"),title:{default:"Memory | ShivanyaMS",template:"%s | Memory"},description:"Personal notes, tasks, lists, goals, routines and reminders.",robots:{index:false,follow:false}};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en" suppressHydrationWarning><head><ThemeScript /></head><body><AuthProvider>{children}</AuthProvider></body></html>;}
