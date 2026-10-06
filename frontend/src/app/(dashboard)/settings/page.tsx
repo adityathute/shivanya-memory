@@ -1,0 +1,1 @@
+import {Typography} from "shivanya-ui";export default function Page(){return <section className="memory-page"><Typography as="h1" variant="h2" weight="semibold">Settings</Typography><Typography as="p" variant="body" color="secondary">Memory security and application settings.</Typography></section>;}
