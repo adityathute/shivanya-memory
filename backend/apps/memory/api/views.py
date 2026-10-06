@@ -30,13 +30,13 @@ class OwnedViewSet(viewsets.ModelViewSet):
         instance.trashed=True;instance.trashed_at=timezone.now();instance.archived=False;instance.archived_at=None;instance.save()
     @action(detail=True,methods=["post"])
     def archive(self,request,pk=None):
-        obj=self.get_object();obj.archived=True;obj.archived_at=timezone.now();obj.trashed=False;obj.trashed_at=None;obj.save();return Response(self.get_serializer(obj).data)
+        obj=self.model.objects.get(pk=pk,user=request.user);obj.archived=True;obj.archived_at=timezone.now();obj.trashed=False;obj.trashed_at=None;obj.save();return Response(self.get_serializer(obj).data)
     @action(detail=True,methods=["post"])
     def restore(self,request,pk=None):
-        obj=self.get_object();obj.archived=False;obj.archived_at=None;obj.trashed=False;obj.trashed_at=None;obj.save();return Response(self.get_serializer(obj).data)
+        obj=self.model.objects.get(pk=pk,user=request.user);obj.archived=False;obj.archived_at=None;obj.trashed=False;obj.trashed_at=None;obj.save();return Response(self.get_serializer(obj).data)
     @action(detail=True,methods=["post"])
     def trash(self,request,pk=None):
-        obj=self.get_object();obj.trashed=True;obj.trashed_at=timezone.now();obj.archived=False;obj.archived_at=None;obj.save();return Response(self.get_serializer(obj).data)
+        obj=self.model.objects.get(pk=pk,user=request.user);obj.trashed=True;obj.trashed_at=timezone.now();obj.archived=False;obj.archived_at=None;obj.save();return Response(self.get_serializer(obj).data)
     @action(detail=True,methods=["post"])
     def favorite(self,request,pk=None):
         obj=self.get_object();obj.favorite=not obj.favorite;obj.save(update_fields=["favorite","updated_at"]);return Response(self.get_serializer(obj).data)
