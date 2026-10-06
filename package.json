@@ -1,0 +1,1 @@
+{"name":"shivanya-memory","private":true,"version":"1.0.0","scripts":{"dev":"pnpm --dir frontend dev","build":"pnpm --dir frontend build","lint":"pnpm --dir frontend lint","typecheck":"pnpm --dir frontend typecheck","backend":"python backend/manage.py runserver","backend:test":"python backend/manage.py test"},"packageManager":"pnpm@11.9.0"}
