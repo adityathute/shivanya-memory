@@ -1,0 +1,136 @@
+/* ==========================================================
+   Archive
+   ========================================================== */
+
+.archivePage {
+  width: 100%;
+}
+
+/* ==========================================================
+   Archive Icon
+   ========================================================== */
+
+.archivePage__emptyIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c3aed;
+}
+
+.archivePage__emptyIcon svg {
+  color: #7c3aed;
+}
+
+/* ==========================================================
+   Archive Item
+   ========================================================== */
+
+.archiveItem__icon {
+  color: #7c3aed;
+  background: #7c3aed10;
+}
+
+.archiveItem__restore {
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 11px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.archiveItem__restore:hover {
+  border-color: #16a34a;
+  color: #16a34a;
+  background: #16a34a0a;
+}
+
+/* ==========================================================
+   Error
+   ========================================================== */
+
+.archivePage__error {
+  margin-bottom: 16px;
+  padding: 10px 12px;
+
+  border: 1px solid #dc262640;
+  border-radius: 8px;
+
+  background: #dc26260a;
+  color: #dc2626;
+
+  font-size: 12px;
+}
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+
+@media (max-width: 480px) {
+  .archiveItem__restore span {
+    display: none;
+  }
+
+  .archiveItem__restore {
+    width: 34px;
+    padding: 0;
+  }
+}
+
+.archiveItem__delete {
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 11px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.archiveItem__delete:hover {
+  border-color: #dc2626;
+  color: #dc2626;
+  background: #dc26260a;
+}
+
+@media (max-width: 480px) {
+  .archiveItem__delete span {
+    display: none;
+  }
+
+  .archiveItem__delete {
+    width: 34px;
+    padding: 0;
+  }
+}
