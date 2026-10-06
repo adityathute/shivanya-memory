@@ -1,0 +1,4 @@
+import type { AuthClient } from "shivanya-auth";
+const baseUrl=(process.env.NEXT_PUBLIC_MEMORY_API_URL||"http://localhost:8002").replace(/\/$/,"");
+const prefix=(process.env.NEXT_PUBLIC_MEMORY_API_PREFIX||"api/v1").replace(/^\/+|\/+$/g,"");
+export async function memoryApi<T>(client:AuthClient,path:string,options:RequestInit={}):Promise<T>{const token=await client.getAccessToken();const headers=new Headers(options.headers);if(options.body&&!headers.has("Content-Type"))headers.set("Content-Type","application/json");if(token)headers.set("Authorization","Bearer "+token);const response=await fetch(baseUrl+"/"+prefix+"/"+path.replace(/^\/+/, ""),{...options,headers});const data=await response.json().catch(()=>null);if(!response.ok)throw new Error(data?.detail||data?.message||"Memory request failed.");return data?.data??data;}
